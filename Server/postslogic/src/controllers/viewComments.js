@@ -9,7 +9,11 @@ async function ViewComments(req, res) {
           let request = new mssql.Request(sql);
           request.input('postID', user.PostID)
           let results = await request.execute('ViewComments')
-          res.json(results.recordset);
+          res.json({
+            success: true,
+            results: results.recordset
+          }
+            );
         }
   }
    catch (error) {

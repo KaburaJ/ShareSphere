@@ -9,7 +9,11 @@ async function ViewFollowers(req, res) {
           let request = new mssql.Request(sql);
           request.input('userID', UserID)
           let results = await request.execute('ViewFollowers')
-          res.json(results.recordset);
+          res.json(
+            {
+              success: true,
+              results: results.recordset
+            });
         }
   }
    catch (error) {

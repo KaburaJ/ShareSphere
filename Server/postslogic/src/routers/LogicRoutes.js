@@ -22,6 +22,8 @@ const ViewUserActivity = require('../controllers/ViewUserActivity');
 const CreateNewPost = require('../controllers/CreateNewPost');
 const SearchUsersByUsername = require('../controllers/search');
 const EditUserProfile = require('../controllers/EditUserProfile');
+const GetPostDetails = require('../controllers/GetPostDetails');
+const DeletePostWithCommentsAndReactions = require('../controllers/DeletePostWithCommentsAndReactions');
 require('dotenv').config()
 
 
@@ -33,7 +35,7 @@ logicRoutes.put('/user/editusername', EditUsername);
 logicRoutes.delete('/user/deleteaccount', DeleteAccount);
 logicRoutes.post('/user/profile', CreateProfile);
 logicRoutes.post('/user/profile/edit', EditUserProfile);
-logicRoutes.get('/comments', ViewComments);
+logicRoutes.post('/comments', ViewComments);
 logicRoutes.post('/comments', CommentOnAPost);
 logicRoutes.get('/comments/:id', CommentsCounterPerPost);
 logicRoutes.get('/viewreplies/:id', ViewReplies);
@@ -47,5 +49,7 @@ logicRoutes.put('/react', ReactToPostCommentReply);
 logicRoutes.delete('/react/delete', DeleteReaction);
 logicRoutes.get('/activity/:id', ViewUserActivity);
 logicRoutes.post('/search', SearchUsersByUsername);
+logicRoutes.post('/postdetails', GetPostDetails);
+logicRoutes.delete('/deletepost', DeletePostWithCommentsAndReactions);
 
 module.exports = logicRoutes;

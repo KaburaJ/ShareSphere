@@ -1,26 +1,25 @@
 const mssql = require('mssql');
 const config = require('../config/userConfig');
 
-async function ViewUserActivity(req, res) {
+async function GetPostDetails(req, res) {
   try{
         let sql = await mssql.connect(config);
-        let UserID = req.params.id;
+        let user = req.body;
         if (sql.connected) {
           let request = new mssql.Request(sql);
-          request.input('userID', UserID)
-          let results = await request.execute('ViewUserActivity')
+          request.input('postID', user.PostID)
+          let results = await request.execute('GetPostDetails')
           res.json({
             success: true,
-            message: "Viewed user activity successfully",
             results: results.recordset
           }
-           );
+            );
         }
   }
    catch (error) {
-      console.error('Error viewing user activity:', error);
+      console.error('Error viewing comments:', error);
       res.status(500).json({ error: 'Internal server error' });
     }
   }
 
-module.exports = ViewUserActivity
+module.exports = GetPostDetails

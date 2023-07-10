@@ -15,7 +15,8 @@ async function ReactToPostCommentReply(req, res) {
           let results = await request.execute('ReactToPostCommentReply')
           res.json({
             success: true,
-            message: "Reacted successfully"
+            message: "Reacted successfully",
+            results: results.recordset
           }
            );
         }

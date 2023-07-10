@@ -12,7 +12,8 @@ async function FollowUser(req, res) {
           let results = await request.execute('FollowUser')
           res.json({
             success: true,
-            message: "Following done successfully"
+            message: "Following done successfully",
+            results: results.recordset
           }
            );
         }

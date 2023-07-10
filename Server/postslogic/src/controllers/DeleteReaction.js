@@ -15,7 +15,8 @@ async function DeleteReaction(req, res) {
           let results = await request.execute('DeleteReaction')
           res.json({
             success: true,
-            message: "Reaction deleted successfully"
+            message: "Reaction deleted successfully",
+            results: results.recordset
           }
            );
         }

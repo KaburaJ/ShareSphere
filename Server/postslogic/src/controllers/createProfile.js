@@ -5,18 +5,17 @@ async function CreateProfile(req, res) {
   try{
         let sql = await mssql.connect(config);
         let user = req.body;
-        //check user login
         if (sql.connected) {
             const request = new mssql.Request(sql);
             request.input('profileImage',user.ProfileImage)
             .input('userName',user.UserName)
             .input('profileDescription',user.ProfileDescription)
-            const results = await request.execute('dbo.CreateProfile');
+            const results = await request.execute('CreateProfile');
             res.json(results.recordset);
         }
   }
    catch (error) {
-      console.error('Error retrieving users:', error);
+      console.error('Error creating profile:', error);
       res.status(500).json({ error: 'Internal server error' });
     }
   }

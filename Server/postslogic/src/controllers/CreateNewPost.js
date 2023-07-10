@@ -13,7 +13,8 @@ async function CreateNewPost(req, res) {
             const results = await request.execute('dbo.CreateNewPost');
             res.json({
                 success: true,
-                message: "Post updated successfully"
+                message: "Post created successfully"
+
             });
         }
   }
