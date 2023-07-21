@@ -5,9 +5,10 @@ async function EditUsername(req, res) {
   try{
         let sql = await mssql.connect(config);
         let user = req.body;
+        let UserID = req.session.user.UserID;
         if (sql.connected) {
             const request = new mssql.Request(sql);
-            request.input('userID',user.UserID)
+            request.input('userID',UserID)
             .input('newUserName',user.UserName)
             const results = await request.execute('dbo.EditUsername');
             res.json(results.recordset);

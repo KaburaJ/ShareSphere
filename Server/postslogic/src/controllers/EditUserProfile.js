@@ -5,17 +5,17 @@ async function EditUserProfile(req, res) {
   try{
         let sql = await mssql.connect(config);
         let user = req.body;
+        let UserID = req.session.user.UserID;
         if (sql.connected) {
             const request = new mssql.Request(sql);
-            request.input('userID',user.UserID)
+            request.input('userID',UserID)
             .input('newUserName',user.UserName)
             .input('profileImage',user.ProfileImage)
             .input('profileDescription',user.ProfileDescription)
             const results = await request.execute('dbo.EditUserProfile');
             res.json({
                 success: true,
-                message: "Profile edited successfully",
-                results: results.recordset[0]
+                message: "Profile edited successfully"
             });
         }
   }

@@ -1,0 +1,35 @@
+.how-to-guide {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .guide-content {
+    text-align: center;
+  }
+  
+  .guide-content h2 {
+    margin-bottom: 10px;
+  }
+  
+  .guide-navigation {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .guide-navigation button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

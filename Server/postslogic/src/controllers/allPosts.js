@@ -6,7 +6,7 @@ async function getAllPosts(req, res) {
   try {
     const sql = await mssql.connect(config);
     if (sql.connected) {
-      const result = await sql.query('SELECT * FROM Posts');
+      const result = await sql.query('SELECT * FROM Posts ORDER BY timestamp DESC');
       res.json(result.recordset);
     }
   } catch (error) {

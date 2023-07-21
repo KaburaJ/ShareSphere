@@ -1,0 +1,121 @@
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 1em;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('../../images/female-g656310b7a_1280.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left;
+}
+
+.landing-content {
+  text-align: center;
+  margin-left: 50%;
+  margin-top: 5%;
+  max-width: 600px;
+  max-height: 800px;
+  padding: 40px;
+  /* background-color: white; */
+  box-shadow: 8px 8px 8px 8px solid white;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  width: 200px;
+  height: 140px;
+  margin-bottom: -120px;
+  position: relative;
+}
+
+  
+  .heading {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin-bottom: 11px;
+    letter-spacing: .1em;
+  }
+  
+  .subheading {
+    font-size: 1.5rem;
+    color: #888;
+    margin-bottom: 30px;
+  }
+  
+  .sign-up-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .email-signup-button,
+  .google-signup-button,
+  .signin-button {
+    height: 40px;
+    width: 90%;
+    border-radius: 20px;
+    margin-left: 1.2em;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .email-signup-button {
+    background-color: #1e90ff;
+  }
+  
+  .google-signup-button {
+    background-color: #db4437;
+  }
+  
+  .signin-button {
+    background-color: #e38b00;
+  }
+  
+  .or-divider {
+    text-align: center;
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 10px;
+  }
+
+  .terms-of-service{
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 10px;   
+  }
+  
+  .terms{
+    font-size: 0.7rem;
+    color: #888;
+    margin-bottom: 10px;
+  }
+
+  .privacy{
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  
+  
+  .signin-prompt {
+    font-size: .8rem;
+    color: #888;
+  }
+  
+  .signin-prompt a {
+    color: #e38b00;
+    font-weight:bold;
+    text-decoration: none;
+  }
+  
+  .signin-prompt a:hover {
+    text-decoration: underline;
+  }
+  

@@ -9,8 +9,18 @@ const { v4 } = require("uuid")
 const {createClient} = require("redis")
 require('dotenv').config();
 
+const cors = require('cors');
+
 const app = express();
 app.use(express.json());
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
 
 
 
@@ -53,7 +63,7 @@ app.use('/', async(req, res, next)=>{
   let session = await redisClient.get(sessionID)
   if(session){
       let real_session = JSON.parse(session)
-      console.log(real_session);
+      // console.log(real_session);
       next()
   }else{
       res.status(403).json({

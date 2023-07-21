@@ -1,0 +1,64 @@
+.mainMessagesContainer {
+    margin-left: 20%;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .messageList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+
+  .dark-mode-messages{
+    background-color: black;
+    color: white;
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .messageItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .avatarContainer {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .messageContent {
+    margin-left: 10px;
+  }
+  
+  .messageHeader {
+    display: flex;
+    align-items: center;
+  }
+  
+  .senderName {
+    font-weight: bold;
+  }
+  
+  .timestamp {
+    margin-left: 10px;
+    color: #888;
+  }
+  
+  .messageText {
+    color: #555;
+  }
+  

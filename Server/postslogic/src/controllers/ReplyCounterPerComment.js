@@ -8,11 +8,11 @@ async function ReplyCounterPerComment(req, res) {
         if (sql.connected) {
           let request = new mssql.Request(sql);
           request.input('commentID', CommentID)
-          let results = await request.execute('ReplyCounterPerComment')
+          let results = await request.execute('ReplyCountPerComment')
           res.json({
             success: true,
             message: "Replies counted successfully",
-            results: results.output
+            results: results.recordset
           }
            );
         }

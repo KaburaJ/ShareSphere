@@ -8,8 +8,16 @@ const RedisStore = require('connect-redis').default;
 const {createClient} = require("redis")
 const userRoutes = require('./src/routers/userRoutes');
 
+const cors = require('cors');
+
 const app = express();
 app.use(express.json());
+app.use(cors({
+    origin:'http://localhost:3000',
+    credentials:true,      
+    optionSuccessStatus:200
+}))
+
 
 
 
@@ -34,7 +42,7 @@ app.use(session({
     secret: process.env.SECRET,
     saveUninitialized: false,
     genid: ()=>v4(),
-    resave: true,
+    resave: false,
     rolling: true,
     unset: 'destroy',
     cookie:{

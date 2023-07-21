@@ -1,0 +1,59 @@
+.notifications-page {
+    /* max-width: 600px; */
+    /* margin: 0 auto; */
+    padding: 20px;
+    margin-left: 25%;
+  }
+
+  .mainNotifyContainer{
+    margin-left: 30%;
+  }
+
+  .dark-mode-notification{
+    background-color: black;
+    color: white;
+    width: 100%;
+  }
+
+  .mainNotifyContainer h1{
+    margin-left: 22%;
+    position: sticky;
+    z-index: 1;
+    flex-grow: 1;
+    top: 0;
+    overflow-y: auto;
+  }
+  
+  .notifications-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .no-notifications {
+    margin-top: 20px;
+    color: #888;
+  }
+  
+  .notifications-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .notification-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .notification-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .notification-message {
+    font-size: 14px;
+    color: #888;
+  }
+  

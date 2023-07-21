@@ -9,11 +9,11 @@ async function CommentsCounterPerPost(req, res) {
         if (sql.connected) {
           let request = new mssql.Request(sql);
           request.input('postId', PostID)
-          let results = await request.execute('CommentsCounterPerPost')
+          let results = await request.execute('CommentsCountPerPost')
           res.json({
             success: true,
             message: "Comment counted successfully",
-            results: results.output
+            results: results.recordset
           }
            );
         }

@@ -1,0 +1,11 @@
+.golive{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 4em;
+}
+
+.golive-darkmode{
+    background-color: black;
+    color: white;
+}

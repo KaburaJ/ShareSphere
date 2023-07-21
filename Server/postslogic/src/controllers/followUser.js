@@ -5,9 +5,10 @@ async function FollowUser(req, res) {
   try{
         let sql = await mssql.connect(config);
         let user = req.body;
+        let UserID = req.session.user.UserID;
         if (sql.connected) {
           let request = new mssql.Request(sql);
-          request.input('followerID', user.UserID)
+          request.input('followerID', UserID)
           .input('followedID', user.FollowedID)
           let results = await request.execute('FollowUser')
           res.json({

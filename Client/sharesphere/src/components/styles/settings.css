@@ -1,0 +1,73 @@
+.settings-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+  
+  .settings-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .settings-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  textarea,
+  .form-group input {
+    margin-top: 1em;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: transparent;
+  }
+
+  textarea{
+    height: 80px;
+  }
+  
+  .btn-save {
+    background-color: #e38b00;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .btn-save:hover {
+    background-color: #ff9d00;
+  }
+  
+  .btn-save:active {
+    background-color: #ccc;
+  }
+
+  /* Add these styles to your CSS file */
+textarea.normal {
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  textarea.bold {
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  textarea.italic {
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  
+  

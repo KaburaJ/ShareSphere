@@ -27,6 +27,7 @@ module.exports = {
             req.session.user = result.recordset[0];
             console.log(req.session.user);
             req.session.userId = user.id;
+            req.session.UserName=username
             req.session.save((error) => {
               if (error) {
                 console.error('Session save error:', error);
@@ -34,7 +35,7 @@ module.exports = {
                 res.status(200).json({
                   success: true,
                   message: 'Logged in successfully',
-                  result: user.id,
+                  result: user.id, username,
                 });
               }
             });

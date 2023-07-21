@@ -24,32 +24,54 @@ const SearchUsersByUsername = require('../controllers/search');
 const EditUserProfile = require('../controllers/EditUserProfile');
 const GetPostDetails = require('../controllers/GetPostDetails');
 const DeletePostWithCommentsAndReactions = require('../controllers/DeletePostWithCommentsAndReactions');
+const ViewNotifications = require('../controllers/ViewNotifications');
+const ViewOtherUserActivity = require('../controllers/ViewOtherUserActivity copy');
+const GetUserNameById = require('../controllers/getUserIdByUsername');
+const DeleteNotification = require('../controllers/deleteNotification');
+const MarkNotificationAsRead = require('../controllers/MarkNotificationAsRead');
+const CountReactionsPerPost = require('../controllers/countPostReactions');
+const DeleteProfile = require('../controllers/deleteProfile');
+const GetProfile = require('../controllers/GetProfile');
+const FollowingCountPerUser = require('../controllers/followingCount');
+const PostsCount = require('../controllers/postsCount');
+const SpecificUserDetails = require('../controllers/thatUserDetails');
 require('dotenv').config()
 
 
 
-logicRoutes.get('/users', getAllUsers);
+logicRoutes.get('/allusers', getAllUsers);
 logicRoutes.get('/posts', getAllPosts);
 logicRoutes.post('/posts', CreateNewPost);
 logicRoutes.put('/user/editusername', EditUsername);
 logicRoutes.delete('/user/deleteaccount', DeleteAccount);
+logicRoutes.delete('/user/notification', DeleteNotification);
+logicRoutes.delete('/deleteprofile', DeleteProfile)
+logicRoutes.get('/viewprofile', GetProfile)
+logicRoutes.post('/user/marknotification', MarkNotificationAsRead);
 logicRoutes.post('/user/profile', CreateProfile);
 logicRoutes.post('/user/profile/edit', EditUserProfile);
-logicRoutes.post('/comments', ViewComments);
+logicRoutes.post('/allcomments', ViewComments);
 logicRoutes.post('/comments', CommentOnAPost);
 logicRoutes.get('/comments/:id', CommentsCounterPerPost);
 logicRoutes.get('/viewreplies/:id', ViewReplies);
 logicRoutes.get('/replies/:id', ReplyCounterPerComment);
 logicRoutes.post('/replies', ReplyOnAComment);
-logicRoutes.get('/follower/:id', ViewFollowers);
+logicRoutes.get('/follower', ViewFollowers);//
 logicRoutes.post('/follow', FollowUser);
-logicRoutes.post('/unfollow', UnfollowUser);
-logicRoutes.get('/followers/:id', FollowerCountPerUser);
-logicRoutes.put('/react', ReactToPostCommentReply);
+logicRoutes.post('/unfollow', UnfollowUser);//
+logicRoutes.get('/followers/:id?', FollowerCountPerUser);
+logicRoutes.get('/following/:id?', FollowingCountPerUser);
+logicRoutes.post('/react', ReactToPostCommentReply);
+logicRoutes.get('/thatuser', SpecificUserDetails)
+logicRoutes.post('/postreactions', CountReactionsPerPost)
+logicRoutes.get('/postscount', PostsCount)
 logicRoutes.delete('/react/delete', DeleteReaction);
-logicRoutes.get('/activity/:id', ViewUserActivity);
+logicRoutes.get('/activity/', ViewUserActivity);//
+logicRoutes.get('/activity/:id', ViewOtherUserActivity);//
 logicRoutes.post('/search', SearchUsersByUsername);
 logicRoutes.post('/postdetails', GetPostDetails);
 logicRoutes.delete('/deletepost', DeletePostWithCommentsAndReactions);
+logicRoutes.get('/notifications', ViewNotifications);//
+logicRoutes.post('/userid', GetUserNameById)
 
 module.exports = logicRoutes;

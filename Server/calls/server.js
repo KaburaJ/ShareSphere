@@ -17,7 +17,16 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'))
 
+const cors = require('cors');
+
 app.use(express.json());
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 async function startApp(){
 try {
@@ -69,10 +78,6 @@ try {
           });
         }
       });      
-
-    // app.get('/', (req, res) => {
-    // res.send('Share Sphere');
-    // });
 
     app.get('/', (req, res) => {
         res.redirect(`/${uuidV4()}`)

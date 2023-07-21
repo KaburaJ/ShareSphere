@@ -5,9 +5,10 @@ async function ReplyOnAComment(req, res) {
   try{
         let sql = await mssql.connect(config);
         let user = req.body;
+        let UserID = req.session.user.UserID;
         if (sql.connected) {
           let request = new mssql.Request(sql);
-          request.input('userID', user.UserID)
+          request.input('userID', UserID)
           request.input('commentID', user.CommentID)
           request.input('replyDescription', user.ReplyDescription)
           let results = await request.execute('ReplyOnAComment')

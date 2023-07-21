@@ -1,0 +1,145 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 310px;
+    height: auto;
+    text-align: center;
+    font-family: arial;
+    margin-top: 4em;
+    position: absolute;
+    margin-left: 14.5em;
+    border-left: 1px solid #ccc;
+
+  }
+  
+
+  .profile-dark-mode{
+    background-color: black;
+    color: white;
+    height: 100vh;
+    margin-top: -6em;
+  }
+
+  .profile-dark-mode .details-card,
+  .profile-dark-mode .card,
+  /* .profile-dark-mode .details-card .title, */
+  .profile-dark-mode  .actions-card {
+    background-color: black;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  .details-card,
+  .actions-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 380px;
+    height: auto;
+    text-align: center;
+    font-family: arial;
+    margin-top: -.2em;
+    position: absolute;
+    margin-left: 35em;
+    background-color: white;
+
+  }
+
+
+  .details-card{
+    margin-left: 60.3em;
+    width: 310px;
+    margin-top: 4.8em;
+  
+  }
+
+  .details-card .title,
+  .actions-card .title{
+    color: grey;
+    font-size: 16px;
+    padding: 1em;
+  }
+
+  .details-card .title{
+    padding:.5em;
+    font-weight: bold
+  }
+.card img{
+  object-fit: cover;
+  object-position: center;
+  width: auto;
+}
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  .contact {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #eca179;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  .contact:hover, a:hover {
+    opacity: 0.7;
+  }
+
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #F2F2F2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .popup-content h2 {
+    margin-top: 0;
+  }
+  
+  .popup-content pre {
+    white-space: pre-wrap;
+  }
+  
+  .popup-content button {
+    margin-top: 10px;
+  }
+  
+  .popup-content p {
+    white-space: pre-wrap;
+  }
+
+  .profile-header{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .profile-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  

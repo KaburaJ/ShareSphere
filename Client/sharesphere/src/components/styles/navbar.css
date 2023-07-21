@@ -1,0 +1,212 @@
+body {
+  background-color: #F9FAFC;
+  color: black;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+
+.dark-mode {
+  /* Styles for dark mode */
+  background-color: #000000;
+  color: white;
+}
+
+
+.navy {
+  display: flex;
+  gap: 20em;
+  /* background-color: white; */
+}
+
+.navbar {
+  position: fixed;
+  background: transparent;
+  display: flex;
+  width: 2em;
+  gap: .4em;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 2em;
+  height: 130vh;
+  transition: 0.3s ease-in;
+}
+
+.RightSideBar{
+  position: fixed;
+  background: transparent;
+  display: flex;
+  width: 1.8em;
+  gap: .4em;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  margin-top: 2em;
+  height: 130vh;
+  transition: 0.3s ease-in;
+}
+
+.navbar .FontAwesomeIcon {
+  position: fixed;
+  background: transparent;
+  top: .4em;
+  left: .6em;
+  color: black;
+  font-size: x-large;
+  padding: 1px;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+/* .logo{
+  position: fixed;
+ margin-left: 7em;
+ margin-top: .2em;
+ width: 80px;
+ height: 60px;
+} */
+
+.top{
+  display: flex;
+  gap:1em;
+}
+
+.navbar-dark-mode {
+  background-color: black;
+  color: #fff;
+}
+
+.navbar-dark-mode .FontAwesomeIcon,
+.navbar-dark-mode .navbar-list,
+.navbar-dark-mode .text h1{
+  color: white;
+}
+
+.navbar-list {
+  position: relative;
+  background: transparent;
+  justify-content: flex-start;
+  align-items: center;
+  list-style: none;
+  color: black;
+  display: flex;
+  height: 10.5vh;
+  transition: 0.7s ease-in;
+}
+
+.icon h2 {
+  margin-left: .6em;
+  margin-right: .6em;
+  font-size: x-large;
+  font-weight: 300;
+  color: #bb7401;
+}
+
+.navbar-list:active {
+  background-color: #ccc;
+}
+
+.text h1 {
+  display: block;
+  color: black;
+  font-size: medium;
+  font-weight: 400;
+  background: transparent;
+  top: 6em;
+  margin-top: 2.8em;
+  /* margin-left:  .6em; */
+}
+
+a {
+  letter-spacing: 4px;
+  font-size: 1.5em;
+  color: black;
+  list-style: none;
+  text-decoration: none;
+  background: transparent;
+}
+
+a:active {
+  color: lightslategray;
+}
+
+.profile {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: .6em;
+}
+
+.profile-pic {
+  left: .2em;
+  width: 50px;
+  height: 50px;
+  /* animation: zoom-in-zoom-out 3s ease infinite; */
+  position: relative;
+}
+
+/* @keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.5, 1.5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+} */
+
+.profile-content {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  gap: .4em;
+}
+
+.profile-content .names {
+  font-size: medium;
+}
+
+.icon {
+  margin-top: 1.2em;
+}
+
+.top-bar {
+  margin-left: 6.4em;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 28em;
+  justify-content: space-around;
+  /* border-right: 1px solid #E38B00; */
+}
+
+
+/* .share-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+.close-button {
+  display: block;
+  margin-top: 20px;
+  background-color: #ccc;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #999;
+} */

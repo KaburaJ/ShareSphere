@@ -1,13 +1,15 @@
 const mssql = require('mssql');
 const config = require('../config/userConfig');
 
+
 async function CreateNewPost(req, res) {
   try{
         let sql = await mssql.connect(config);
         let user = req.body;
+        let UserID = req.session.user.UserID
         if (sql.connected) {
             const request = new mssql.Request(sql);
-            request.input('userID',user.UserID)
+            request.input('userID', UserID)
             .input('postURL',user.PostURL)
             .input('postDescription',user.PostDescription)
             const results = await request.execute('dbo.CreateNewPost');
