@@ -1,13 +1,15 @@
 import React from 'react';
 import './styles/comments.css';
+import { useDarkMode } from './darkModeContext';
 
 export const Comments = ({ profileImage, commenterName, comments }) => {
+  const [darkMode] = useDarkMode()
   if (!comments || comments.length === 0) {
     return <p>No comments available.</p>;
   }
 
   return (
-    <div className="comments-container" style={{ maxWidth: "90%" }}>
+    <div className="comments-container"  style={darkMode ? { backgroundColor: "black", color: "white", height:"100vh", maxWidth:"90%" } : { backgroundColor:"#F4E4EC", height:"100vh", maxWidth:"90%"  }}>
       <h1>Comments</h1>
 
       <ul id="comments-list" className="comments-list">

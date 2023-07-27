@@ -2,25 +2,27 @@ import React from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 // import logo from '../images/sharelogo2-removebg-preview.png';
 import './styles/landing.css';
+import { useDarkMode } from './darkModeContext';
 
 export const Landing = () => {
   const navigate = useNavigate();
+  const [darkMode] = useDarkMode()
 
   const handleEmailSignup = () => {
     navigate('/signup');
   };
 
   return (
-    <div className="landing">
+    <div className="landing" style={{backgroundColor: "white"}}>
       <div className="landing-content">
         {/* <img className="logo" src={logo} alt="ShareSphere Logo" /> */}
         <h1 className="heading" style={{color: "black"}}>Welcome to ShareSphere</h1>
         <div className="sign-up-options">
-          <button className="email-signup-button" onClick={handleEmailSignup}>
+          <button style={{backgroundColor:"#e83d95"}} className="email-signup-button" onClick={handleEmailSignup}>
             Sign up with Email
           </button>
-          <p className="or-divider">Or</p>
-          <button className="google-signup-button">Sign up with Google</button>
+          {/* <p className="or-divider">Or</p>
+          <button className="google-signup-button">Sign up with Google</button> */}
           <p className="terms-of-service">
             By signing up, you agree to the <Link to="/" className='terms'>Terms of Service</Link> and{' '}
             <Link to="/" className='privacy'>Privacy Policy</Link>, including Cookie Use.

@@ -4,11 +4,14 @@ import SideBar from './navbar';
 import axios from 'axios';
 import { Image } from 'cloudinary-react';
 import BackButton from './back';
+import { useDarkMode } from './darkModeContext';
 
 const SettingsPage = () => {
   const [name, setName] = useState('');
   const [bio, setBio] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
+  const [darkMode] = useDarkMode()
+  
 
   const handleFileUpload = async (e) => {
     e.preventDefault();
@@ -62,8 +65,7 @@ const SettingsPage = () => {
 
   return (
     <>
-      <SideBar />
-      <div className="settings-page">
+      <div className="settings-page"  style={darkMode ? { backgroundColor: "black", color: "white", height:"100vh" } : { backgroundColor:"#F4E4EC", height:"100vh" }}>
         <BackButton/>
         <h2 className="settings-title">Settings</h2>
         <form className="settings-form" onSubmit={handleSubmit}>

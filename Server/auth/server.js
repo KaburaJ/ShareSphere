@@ -53,7 +53,7 @@ app.use(session({
     }
 }))
 
-app.use(userRoutes)
+app.use('/', userRoutes)
 
 app.get('/', (req, res) => {
   res.send('Share Sphere');

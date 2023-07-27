@@ -1,13 +1,33 @@
-.notifications-page {
-    /* max-width: 600px; */
-    /* margin: 0 auto; */
-    padding: 20px;
-    margin-left: 25%;
-  }
 
-  .mainNotifyContainer{
-    margin-left: 30%;
-  }
+/* Add styles for tabs */
+.tabs {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.tab {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab.active {
+  border-bottom: 2px solid #E83D95;
+}
+
+.notify{
+  background-color: #F4E4EC;
+}
+
+.notifications-page {
+  margin-left: 25%;
+  
+}
+
+.mainNotifyContainer {
+  margin-left: 30%;
+  background-color: #F4E4EC;
+}
 
   .dark-mode-notification{
     background-color: black;
@@ -38,6 +58,8 @@
     list-style-type: none;
     padding: 0;
     margin-top: 20px;
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: calc(100vh - 200px);
   }
   
   .notification-item {
@@ -57,3 +79,9 @@
     color: #888;
   }
   
+  
+.notifications-list::-webkit-scrollbar {
+  outline: none;
+  background-color: transparent;
+   
+ }

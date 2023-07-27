@@ -28,8 +28,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-async function startApp(){
-try {
+async function startApp() {
+  try {
     const redisClient =  createClient();
     redisClient.connect()
     console.log("Connected to Redis")
@@ -41,77 +41,41 @@ try {
     const oneDay = 60 * 60 * 1000 * 24;
 
     app.use(session({
-    store: redisStore,
-    secret: process.env.SECRET,
-    saveUninitialized: false,
-    genid: ()=>v4(),
-    resave: true,
-    rolling: true,
-    unset: 'destroy',
-    cookie:{
+      store: redisStore,
+      secret: process.env.SECRET,
+      saveUninitialized: false,
+      genid: ()=>v4(),
+      resave: true,
+      rolling: true,
+      unset: 'destroy',
+      cookie: {
         httpOnly: true,
         maxAge: oneDay,
         secure: false,
         domain: 'localhost'
-    }
-    }))
+      }
+    }));
 
-    app.use('/', async(req, res, next) => {
-        let cookie = req.headers['cookie'];
-        if (cookie) {
-          let sessionID = cookie.substring(16, 52);
-          let session = await redisClient.get(sessionID);
-          if (session) {
-            let real_session = JSON.parse(session);
-            console.log(real_session);
-            next();
-          } else {
-            res.status(403).json({
-              success: false,
-              message: "login to proceed"
-            });
-          }
-        } else {
-          res.status(403).json({
-            success: false,
-            message: "cookie not found"
-          });
-        }
-      });      
-
-    app.get('/', (req, res) => {
-        res.redirect(`/${uuidV4()}`)
-      })
-      
-
-    app.get('/:room', (req, res) => {
-    res.render('room', { roomId: req.params.room })
-    })
-    
+    // Handle WebSocket connection for live share
     io.on('connection', socket => {
-    socket.on('join-room', (roomId, userId) => {
+      socket.on('join-room', (roomId, userId) => {
         socket.join(roomId)
         socket.to(roomId).broadcast.emit('user-connected', userId)
-    
+
         socket.on('disconnect', () => {
-        socket.to(roomId).broadcast.emit('user-disconnected', userId)
+          socket.to(roomId).broadcast.emit('user-disconnected', userId)
         })
-    })
-})
+      })
+    });
 
     const port = 5004;
     server.listen(port, () => {
-    console.log(`Server is listening at port ${port}`);
+      console.log(`Server is listening at port ${port}`);
     });
-
-
-    } catch (error) {
-        console.log("Error connecting to database")
-        console.log(error)
-    }
+  } catch (error) {
+    console.log("Error connecting to the database")
+    console.log(error)
+  }
 }
 
 startApp();
-
-
-

@@ -1,11 +1,108 @@
-.golive{
-    align-items: center;
+/* golive.css */
+
+.golive {
     display: flex;
     flex-direction: column;
-    margin-left: 4em;
-}
-
-.golive-darkmode{
-    background-color: black;
+    align-items: center;
+    margin-top: 1em;
+  }
+  
+  #golive-video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1000px, 1fr));
+    grid-gap: 10px;
+    margin: 1em;
+  }
+  
+  .golive-video {
+    width: 50%;
+    max-height: 250px;
+    border-radius: 8px;
+  }
+  
+  .golive-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 1em;
+  }
+  
+  .golive-button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .golive-button.go-live-btn {
+    background-color: #55c57a;
     color: white;
-}
+  }
+  
+  .golive-button.stop-live-btn {
+    background-color: #dc4c4c;
+    color: white;
+  }
+  
+  .golive-button.invite-people-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Invite People Modal */
+  .golive-invite-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 1em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .golive-invite-modal h2 {
+    margin-bottom: 0.5em;
+  }
+  
+  .golive-invite-modal input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 0.5em;
+  }
+  
+  .golive-invite-modal button {
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+  }
+
+  .golive-button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .go-live-btn {
+    background-color: #28a745; /* Green color for Go Live button */
+    color: #fff;
+  }
+  
+  .invite-people-btn {
+    background-color: #ffc107; /* Yellow color for Invite People button */
+    color: #000;
+  }
+  
+  .stop-live-btn {
+    background-color: #dc3545; /* Red color for Stop Live button */
+    color: #fff;
+  }
+  

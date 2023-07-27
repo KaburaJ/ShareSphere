@@ -263,7 +263,8 @@
     background-color: #fff;
     background-clip: border-box;
     border-radius: 6px;
-    box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1)
+    box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+    margin-top: 5em;
 }
 
 .comment-box{

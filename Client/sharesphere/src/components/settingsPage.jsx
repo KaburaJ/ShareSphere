@@ -21,8 +21,7 @@ export const GeneralSettingsPage = () => {
   };
 
   return (
-    <div style={darkMode ? { backgroundColor: "black", color: "white",marginTop:"-1em"} : {}}>
-    <SideBar/>
+    <div style={darkMode ? { marginTop:"-1em", backgroundColor: "black", color: "white"} : {backgroundColor:"#F4E4EC", height:"100vh", marginTop:"-1em"}}>
     <div className={`settings-page ${darkMode ? 'dark-mode' : ''}`}>
       <h1>Settings</h1>
       <div className="settings-option">

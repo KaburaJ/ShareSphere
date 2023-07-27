@@ -17,6 +17,7 @@ import ProfilePic from '../images/profile-pic-removebg-preview.png'
 import { Profile } from './profile';
 import Posts from './postsUpload';
 import { PostsContent } from './posts';
+import { useDarkMode } from './darkModeContext';
 
 function RightSideBar({ children, isOpen, toggleNavbar }) {
   const menuItem = [
@@ -34,6 +35,7 @@ function RightSideBar({ children, isOpen, toggleNavbar }) {
   ]
 
   const [showProfileContent, setShowProfileContent] = useState(false);
+  const [darkMode] = useDarkMode()
 
   const handleIconClick = () => {
     toggleNavbar(isOpen);
@@ -44,7 +46,7 @@ function RightSideBar({ children, isOpen, toggleNavbar }) {
   };
 
   return (
-    <div className="navy">
+    <div className={`navy ${darkMode ? 'navy' : ''}`}>
        {/* <img style={{display: isOpen? "none": "block"}} className="logo" src={logo} alt="ShareSphere Logo" /> */}
       <div className={`navbar ${isOpen ? 'open' : 'closed'}`}>
         <FontAwesomeIcon

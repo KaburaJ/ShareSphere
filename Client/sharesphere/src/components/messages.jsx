@@ -36,15 +36,14 @@ const MessagesPage = () => {
   ];
 
   return (
-    <div style={darkMode ? { backgroundColor: "black", color: "white" } : {}}>
-    <SideBar/>
-    <div className={`mainMessagesContainer ${darkMode ? 'dark-mode-messages' : ''}`}>
+    <div style={darkMode ? { backgroundColor: "black", color: "white" } : {backgroundColor:"#F4E4EC", height:"100vh"}}>
+    <div className="mainMessagesContainer" style={darkMode ? { backgroundColor: "black", color: "white" } : {backgroundColor:"#F4E4EC", height:"100vh"}}>
         <BackButton/>
         <h1>Messages</h1>
         {messages.length === 0 ? (
           <p>No messages found.</p>
         ) : (
-          <ul className="messageList">
+          <ul className="messageList" style={darkMode ? { backgroundColor: "black", color: "white" } : {}}>
             {messages.map((message) => (
               <li key={message.id} className="messageItem">
                 <div className="avatarContainer">

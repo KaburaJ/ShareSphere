@@ -35,10 +35,16 @@ const GetProfile = require('../controllers/GetProfile');
 const FollowingCountPerUser = require('../controllers/followingCount');
 const PostsCount = require('../controllers/postsCount');
 const SpecificUserDetails = require('../controllers/thatUserDetails');
+const GetFollowedUsersPosts = require('../controllers/ForYou.js');
+const SavePost = require('../controllers/savePost');
+const getAllPeople = require('../controllers/allPeople');
+const ViewOtherUserProfile = require('../controllers/otherUserProfile');
+const NotificationsCount = require('../controllers/notificationsCount');
 require('dotenv').config()
 
 
 
+logicRoutes.get('/foryou', GetFollowedUsersPosts);
 logicRoutes.get('/allusers', getAllUsers);
 logicRoutes.get('/posts', getAllPosts);
 logicRoutes.post('/posts', CreateNewPost);
@@ -59,12 +65,12 @@ logicRoutes.post('/replies', ReplyOnAComment);
 logicRoutes.get('/follower', ViewFollowers);//
 logicRoutes.post('/follow', FollowUser);
 logicRoutes.post('/unfollow', UnfollowUser);//
-logicRoutes.get('/followers/:id?', FollowerCountPerUser);
-logicRoutes.get('/following/:id?', FollowingCountPerUser);
+logicRoutes.get('/followers/:userid?', FollowerCountPerUser);
+logicRoutes.get('/following/:userid?', FollowingCountPerUser);
 logicRoutes.post('/react', ReactToPostCommentReply);
 logicRoutes.get('/thatuser', SpecificUserDetails)
 logicRoutes.post('/postreactions', CountReactionsPerPost)
-logicRoutes.get('/postscount', PostsCount)
+logicRoutes.get('/postscount/:userid?', PostsCount)
 logicRoutes.delete('/react/delete', DeleteReaction);
 logicRoutes.get('/activity/', ViewUserActivity);//
 logicRoutes.get('/activity/:id', ViewOtherUserActivity);//
@@ -72,6 +78,11 @@ logicRoutes.post('/search', SearchUsersByUsername);
 logicRoutes.post('/postdetails', GetPostDetails);
 logicRoutes.delete('/deletepost', DeletePostWithCommentsAndReactions);
 logicRoutes.get('/notifications', ViewNotifications);//
-logicRoutes.post('/userid', GetUserNameById)
+logicRoutes.post('/userid', GetUserNameById);
+logicRoutes.post('/save', SavePost)
+logicRoutes.get('/people', getAllPeople)
+logicRoutes.get('/profile/:username', ViewOtherUserProfile)
+logicRoutes.get('/notificationscount', NotificationsCount)
+
 
 module.exports = logicRoutes;

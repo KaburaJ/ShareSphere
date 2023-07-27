@@ -1,0 +1,89 @@
+/* Common styles for both light and dark mode */
+.SideBar {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2em;
+  gap: 1em;
+  width: 192px;
+  height: auto;
+  box-shadow: 2px 2px 2px 2px solid #ccc;
+  position: absolute;
+  border-radius: 10px;
+  margin-top: 3.8em;
+  margin-left: 1em;
+}
+
+.SideBar a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2em;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.SideBar a:hover {
+  background-color: #ddd;
+}
+
+.SideBar a.active {
+  background-color: #E83D95;
+  color: white;
+}
+
+.SideBar .FontAwesomeIcon {
+  font-size: 1.4em;
+  color: #333;
+}
+
+.SideBar button {
+  width: 100%;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  background-color: #e83d95;
+  border: none;
+  color: white;
+  border-radius: 22px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.SideBar button:hover {
+  background-color: #f28cbc;
+}
+
+/* Additional styles for dark mode */
+.SideBar.navbar-dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+.SideBar.navbar-dark-mode a {
+  color: #fff;
+}
+
+.SideBar.navbar-dark-mode .FontAwesomeIcon {
+  color: #fff;
+}
+
+.SideBar.navbar-dark-mode button {
+  background-color: #f5add3;
+}
+
+/* Mobile devices */
+@media only screen and (max-width: 767px) {
+  .SideBar {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 2em;
+    padding: 1em;
+  }
+}

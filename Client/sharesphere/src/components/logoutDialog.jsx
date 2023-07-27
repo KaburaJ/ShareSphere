@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
+import { useDarkMode } from './darkModeContext';
 
 const LogoutDialog = ({ onClose, onConfirm }) => {
   const [password, setPassword] = useState('');
+  const [darkMode] =useDarkMode()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +28,7 @@ const LogoutDialog = ({ onClose, onConfirm }) => {
         },
       }}
     >
-      <div className="logout">
+      <div className="logout" style={darkMode ? { backgroundColor: "black", color: "white", height:"100vh" } : { backgroundColor:"#F4E4EC", height:"100vh"  }}>
         <h1>Enter your password</h1>
         <form onSubmit={handleSubmit}>
           <input

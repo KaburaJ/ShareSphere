@@ -4,10 +4,12 @@ import axios from 'axios';
 import SideBar from './navbar';
 import { useNavigate } from 'react-router-dom';
 import BackButton from './back';
+import { useDarkMode } from './darkModeContext';
 
 export const UserActivity = () => {
   const [myActivity, setMyActivity] = useState([]);
   const navigate = useNavigate();
+  const [darkMode] = useDarkMode()
 
   const viewFollowers = async () => {
     try {
@@ -32,8 +34,7 @@ export const UserActivity = () => {
 
   return (
     <>
-      <SideBar />
-      <div className="container">
+      <div className="container" style={darkMode ? { backgroundColor: "black", color: "white" } : { backgroundColor: "#F4E4EC", color:"black" }}>
         <BackButton />
         <div className="activity-container">
           {myActivity.map((activityItem) => (

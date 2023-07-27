@@ -1,73 +1,62 @@
 .settings-page {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 40px;
-  }
-  
-  .settings-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .settings-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  textarea,
-  .form-group input {
-    margin-top: 1em;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: transparent;
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-  textarea{
-    height: 80px;
-  }
-  
-  .btn-save {
-    background-color: #e38b00;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
-  .btn-save:hover {
-    background-color: #ff9d00;
-  }
-  
-  .btn-save:active {
-    background-color: #ccc;
-  }
+.settings-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
-  /* Add these styles to your CSS file */
-textarea.normal {
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  textarea.bold {
-    font-weight: bold;
-    font-style: normal;
-  }
-  
-  textarea.italic {
-    font-weight: normal;
-    font-style: italic;
-  }
-  
-  
-  
+.settings-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.profile-image-preview {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.profile-image {
+  border-radius: 50%;
+}
+
+.btn-save {
+  padding: 10px 20px;
+  background-color: #BB7401;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  background-color: #CD9C4C;
+}
+

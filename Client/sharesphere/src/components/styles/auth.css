@@ -1,11 +1,10 @@
 body {
-  background-color: #F9FAFC;
+  background-color: #f4e4ec;
   box-sizing: border-box;
   width: 100%;
   color: black;
 
 }
-
 
   .App{
     text-align: center;
@@ -22,13 +21,13 @@ body {
     color: white;
     font-weight: bold;
     font-size: medium;
-    background-color: #1e90ff;
+    background-color: #e83d95;
     margin-bottom: 10px;
     /* box-shadow: 8px 8px 8px 8px solid #ccc; */
   }
   
   .google-signup-button {
-    background-color: #db4437;
+    background-color: #e83d95;
   } 
   
   .signin-button{
@@ -69,7 +68,7 @@ body {
   }
   
   .step-number {
-    background-color: #e38b00;
+    background-color: #e83d95;
     color: white;
     width: 100px;
     height: 30px;
@@ -101,14 +100,20 @@ body {
   .c-password{
     display: flex;
     flex-direction: column;
-    margin-left: 45%;
+    margin-left: 30%;
     margin-right: 35%;
+  
+    
+  }
+
+  form div{
+    margin-left: 15%;
   
     
   }
   
   .c-password{
-    margin-left: 45%;
+    margin-left: 30%;
     margin-right: 35%;
   }
   
@@ -125,6 +130,8 @@ body {
     text-align: center;
     border:none;
     outline: none;
+    color: black;
+    background-color: white;
     box-shadow: 2px 2px 2px 2px #ccc;
     border-radius: 4px
   }
@@ -145,7 +152,7 @@ body {
     margin-left: 29%;
     margin-right: 30%;
     height: 40px;
-    background-color: #e38b00;
+    background-color: #e83d95;
     text-align: center;
     border: none;
     width: 90px;
@@ -178,12 +185,12 @@ body {
   }
   
   .landing .email-signup-button{
-    background-color: #C97C02;
+    background-color: #e83d95;
   }
   
   .landing .signin-button{
     margin-left: 7%;
-    background-color: #C97C02;
+    background-color: #e83d95;
     color: white;
     /* box-shadow: none; */
     border: none;
@@ -196,7 +203,6 @@ body {
     color: black;
     width: 80vh;
     margin-right: 10em;
-    /* border: 1px solid #f3b34c; */
     padding: 1em;
     border-radius: 15px;
     box-shadow: 2px 2px 2px 2px #ccc;
@@ -210,16 +216,16 @@ body {
   .content h3{
     font-style: italic;
     margin-bottom: 2em;
-    color: #e9a233;
+    color: #e83d95;
   }
   
   .content h6{
-    color: #e9a233;
+    color: #e83d95;
     font-weight: bold;
   }
 
   .content h4{
-    color: #C97C02;
+    color: #e83d95;
   }
   
   .login{
@@ -234,7 +240,7 @@ body {
     padding: 2%;
     gap:30px;
     background-color: white;
-    border: 1px solid #E38B00;
+    border: 1px solid #e83d95;
     box-shadow: 2px 2px 2px 2px #ccc;
     border-radius: 15px;
   }
@@ -265,35 +271,36 @@ body {
   }
   
   .signinlogin-button{
-    background-color: #E38B00;
+    background-color: #e83d95;
     margin-bottom: 10px;
     margin-right: 15%;
   }
   
   .signinlogin-button:hover,
   .googlelogin-signup-button:hover {
-    background-color: #C97C02;
+    background-color: #e83d95;
   }
   
   .signin-button{
     margin-bottom: 10px;
-    color: #E38B00;
+    color: black;
     font-weight: bold;
     margin-left: 15%;
     margin-right: 35%;
     width: 390px;
-    border: 1px solid #E38B00;
+    background-color: #e83d95;
+    border: 1px solid #e83d95;
     box-shadow: 2px 2px 2px 2px #ccc;
     transition: background-color 0.3s ease;
   }
   
   .signin-button:hover {
-    background-color: #C97C02;
+    background-color: #e83d95;
   }
   
   
   .googlelogin-signup-button{
-    background-color: #db4437;
+    background-color: #e83d95;
     margin-bottom: 10px;
   
   }
@@ -318,7 +325,7 @@ body {
   }
   
   .login form h1{
-    color:#E38B00;
+    color:#e83d95;
     margin-left: 20%;
   }
   
@@ -369,13 +376,13 @@ body {
   color: white;
   font-weight: bold;
   font-size: medium;
-  background-color: #1e90ff;
+  background-color: #e83d95;
   margin-bottom: 10px;
   transition: background-color 0.3s ease;
 }
 
 .google-signup-button {
-  background-color: #db4437;
+  background-color: #e83d95;
 } 
 
 .signin-button{
@@ -387,7 +394,7 @@ body {
 .signin-button:hover,
 .email-signup-button:hover,
 .google-signup-button:hover {
-  background-color: #E38B00;
+  background-color: #e83d95;
 }
 
 

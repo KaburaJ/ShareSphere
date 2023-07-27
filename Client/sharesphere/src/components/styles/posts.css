@@ -1,188 +1,194 @@
-body {
-    /* background-color: black; */
-    box-sizing: border-box;
-    width: 100%;
-    background-color: transparent;
-  }
+/* posts.css */
 
-  .posts {
-    position: relative;
-    margin-bottom: 30px;
-    box-shadow: 2px 2px 2px 2px solid #CCCC;
-  }
+.posts {
+  position: relative;
+  box-shadow: 2px 2px 2px 2px solid #ccc;
+  padding: 1em;
+  border-radius: 10px;
+}
 
-  .posts-metadata:hover{
-    background-color: #ccc;
-  }
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0; 
+}
 
-  .input-field{
-    margin-left: 38%;
-    margin-top: 3%;
-  }
 
-  .input-field input{
-    height: 40px;
-  }
+.posts:nth-child(even) {
+  background-color: white; 
+}
 
-  input[type=file]::file-selector-button {
-    margin-right: 20px;
-    border: none;
-    background: #E38B00;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
-    margin-top: 4em;
-    transition: background .2s ease-in-out;
-  }
-  
-  input[type=file]::file-selector-button:hover {
-    background: #ccc;
-  }
+.posts:nth-child(odd) {
+  background-color: white;
+}
 
-  .post-image-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: transparent;
+.post-naming {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
 
-  }
+.poster-image {
+  border-radius: 50%;
+  width: 4em;
+  height: 4em;
+  object-fit: cover;
+  object-position: center;
+}
 
-    button{
-    height: 36px;
-    border: none;
-    background: #E38B00;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
-    transition: background .2s ease-in-out;
-  }
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
 
-  .post-naming{
-    display: flex;
-    gap: 2em
-    
-  }
+.username {
+  font-weight: bold;
+  margin-left: 1em;
+}
 
-  .poster-image {
-    border-radius: 50%;
-    width: 4em;
-    height: 4em;
-    margin-left: 1em;
-    object-fit: cover;
-    object-position: center;
-    background-color: transparent;
-  }
+.post-content {
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
 
-  .user-details{
-    display: flex;
-    flex-direction: column;
-  }
+.post-metadata {
+  font-size: 14px;
+  color: #888;
+}
 
-  .username{
-    font-weight: bold;
-    margin-left: 1em;
-  }
-  .post-image {
-    width: 50vw;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 20px;
-    height: auto;
-    /* max-width: 900px; */
-    background-color: transparent;
-    height: auto;
-    margin-bottom: 20px;
-    /* margin-left: -2em; */
-  }
-  
-  .post-content {
-    font-size: 18px;
-    margin-bottom: 10px;
-    border-radius: none;
-    
-  }
-  
-  .post-metadata {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 5px;
-  }
-  
-  .post-date {
-    margin-right: 10px;
-  }
-  
-  .post-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color:  #E38B00;
-    color: #fff;
-    text-decoration: none;
-    border: none;
-    /* border-radius: 4px; */
-    margin-bottom: 30px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .post-button:hover {
-    background-color: #ccc;
-  }
+.post-date {
+  margin-right: 10px;
+}
 
-  .caption-form{
-    display: flex;
-    flex-direction: column;
-  }
-  .caption-form input{
-    margin-top: 40px;
-    margin-bottom: 10px;
-    height: 150px;
-    width: 400px;
-    border-radius: 20px;
-    text-align: center;
-  }
+.post-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  object-fit: cover;
+  object-position: center;
+}
 
-  .caption-form button{
-    width: 120px;
-    margin: 0 auto;
 
-  }
+.options {
+  display: flex;
+  gap: 50px;
+}
 
-  .options{
-    display: flex;
-    gap: 50px;
-  }
+.posts-icons {
+  display: flex;
+  gap: 10px;
+}
 
-  .posts-icons{
-    display: flex;
-    gap: 10px;
-    
-  }
+.like-icon,
+.comments-icon {
+  font-size: medium;
+  color: #e83d95;
+}
 
-  .like-icon,
-  .comments-icon{
-    font-size: medium;
-    
-  }
+.like-button,
+.comments-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: #e83d95;
+  margin-bottom: 15px;
+  cursor: pointer;
+  border: none;
+}
 
-  .comments-icon,
-  .like-button{
-    justify-content: left;
-    background: transparent;
-    color: #E38B00;
-    margin-bottom: 15px;
-  }
+.like-button:focus,
+.comments-icon:focus {
+  outline: none;
+}
 
-  .hover-icons{
-    display: flex;
-    gap:8px;
-    cursor: pointer;
-  }
+.hover-icons {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+}
 
-  .hover-icons:hover::before {
-    display: none;
- }
- .hover-icons:hover::after {
-    display: block;
- }
+.hover-icons:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+  border-radius: 20px;
+  background-color: rgba(227, 139, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.hover-icons:hover:before {
+  opacity: 1;
+}
+
+.hover-icons:after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: -5px;
+  right: -5px;
+  border-radius: 20px;
+  border: 1px solid #e83d95;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.hover-icons:hover:after {
+  opacity: 1;
+}
+
+/* CSS for the pop-up menu */
+.popup {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 8px;
+  z-index: 1;
+  width: 3%;
+}
+
+.popup button {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 14px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.popup button:hover {
+  background-color: #f5f5f5;
+}
+
+.popup button:last-child {
+  border-top: 1px solid #ccc;
+}
+
+/* Hide the pop-up initially */
+.popup:not(.show) {
+  display: none;
+}
+
+.option{
+  cursor: pointer;
+}
+.option.selected {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}

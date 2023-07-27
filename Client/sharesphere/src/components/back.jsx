@@ -10,7 +10,8 @@ const BackButton = () => {
 
   return (
     <div>
-      <button onClick={handleGoBack}>
+      <button onClick={handleGoBack} style={{boxShadow:"2px 2px 2px 2px solid #ccc",  position: "sticky",
+    top: "0", zIndex:"2"}}>
       <span>&larr;</span> Back
       </button>
     </div>

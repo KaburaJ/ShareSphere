@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import BackButton from './back';
 import { toast } from 'react-toastify';
+import { useDarkMode } from './darkModeContext';
 
 export const Login = () => {
   const [step, setStep] = useState(1);
@@ -11,6 +12,7 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [response, setResponse] = useState(null);
   const navigate = useNavigate()
+  const [darkMode] = useDarkMode()
 
   const handleNext = (selectedStep) => {
     setStep(selectedStep);
@@ -92,29 +94,29 @@ export const Login = () => {
     switch (step) {
       case 1:
         return (
-          <div className='username'>
+          <div className='username' style={{height:"100vh"}}>
             <form onSubmit={handleFormSubmit}>
               <div style={{ fontWeight:"normal", color:"black", marginLeft: '24em'}}>Step 1 of 2</div>
               <input className='UserName' placeholder="Username" style={{ marginLeft: '28em'}} value={username} onChange={handleUserName} />
-              <h4 style={{ marginLeft: '20em', color: '#C97C02' }}>
+              <h4 style={{ marginLeft: '18em', color: '#e83d95' }}>
               Do not have an account? 
-              <Link to="/signup" style={{ marginLeft: '2em', color: '#e9a233',fontSize: 'medium' }}>Sign up</Link>
+              <Link to="/signup" style={{ marginLeft: '2em', color: '#eb6eb0',fontSize: 'medium' }}>Sign up</Link>
             </h4>
             </form>
           </div>
         );
       case 2:
         return (
-          <div className='password'>
+          <div className='password' style={{height:"100vh"}}>
             <form onSubmit={handleFormSubmit}>
-              <div style={{ color:"black", marginLeft: '-3em'}}>Step 2 of 2</div>
-              <input type='password' className='Password' placeholder="Password" style={{ height:"3em",marginLeft: '-12em'}} value={password} onChange={handlePassword} />
+              <div style={{ color:"black", marginLeft: '3em'}}>Step 2 of 2</div>
+              <input type='password' className='Password' placeholder="Password" style={{ height:"3em",marginLeft: '-1em'}} value={password} onChange={handlePassword} />
               <Link to="/home" style={{ marginLeft: '2em' }}>
-              <button onClick={logindata} >Sign in</button>
+              <button onClick={logindata} style={{backgroundColor: '#e83d95'}} >Sign in</button>
             </Link>
-              <h4 style={{ marginLeft: '-9em', color: '#C97C02' }}>
+              <h4 style={{ marginLeft: '-1em', color: '#e83d95' }}>
               Do not have an account? 
-              <Link to="/signup" style={{ marginLeft: '2em', color: '#e9a233',fontSize: 'medium' }}>Sign up</Link>
+              <Link to="/signup" style={{ marginLeft: '2em', color: '#eb6eb0',fontSize: 'medium' }}>Sign up</Link>
             </h4>
             </form>
           </div>
@@ -126,7 +128,7 @@ export const Login = () => {
 
   return (
     <div style={{marginLeft:'10em'}} className='signup'>
-      <BackButton/>
+      {/* <BackButton/> */}
       {Navigation()}
       {signUpContent()}
       {Popup()}

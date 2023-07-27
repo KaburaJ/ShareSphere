@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './styles/notifications.css';
-import SideBar from './navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import BackButton from './back';
 import { useDarkMode } from './darkModeContext';
 
-const NotificationsPage = () => {
+const NotificationsPage = ({updateNotificationsCount}) => {
   const [notifications, setNotifications] = useState([]);
-  const [darkMode] = useDarkMode()
+  const [darkMode] = useDarkMode();
+  const [selectedTab, setSelectedTab] = useState('unread'); // Track which section is selected
 
   useEffect(() => {
     const fetchNotifications = async () => {
@@ -56,6 +56,7 @@ const NotificationsPage = () => {
       });
 
       console.log(response.data[0].Result);
+      updateNotificationsCount();
 
       setNotifications((prevNotifications) =>
         prevNotifications.map((prevNotification) =>
@@ -69,24 +70,38 @@ const NotificationsPage = () => {
     }
   };
 
-
   const readNotifications = notifications.filter((notification) => notification.isRead);
   const unreadNotifications = notifications.filter((notification) => !notification.isRead);
 
   return (
-    <div style={darkMode ? { backgroundColor: "black", color: "white" } : {}}>
-      <SideBar />
-      <div className={`mainNotifyContainer ${darkMode? `dark-mode-notification`:''}`}>
-        <BackButton/>
-        <h1>Notifications</h1>
+    <div className="notify" style={darkMode ? { backgroundColor: "black", color: "white" } : { backgroundColor: "#F4E4EC", color:"black" }}>
+      <div className={`mainNotifyContainer ${darkMode ? 'dark-mode-notification' : ''}`}>
+        <BackButton />
+        <header>
+          <h1>Notifications</h1>
+        </header>
+        <div className="tabs">
+          <span
+            className={`tab ${selectedTab === 'unread' ? 'active' : ''}`}
+            onClick={() => setSelectedTab('unread')}
+          >
+            Unread
+          </span>
+          <span
+            className={`tab ${selectedTab === 'read' ? 'active' : ''}`}
+            onClick={() => setSelectedTab('read')}
+          >
+            Read
+          </span>
+        </div>
+
         {!unreadNotifications.length && !readNotifications.length ? (
           <p>No notifications found.</p>
         ) : (
           <>
-            {unreadNotifications.length > 0 && (
-              <>
-                <h2 className="notification-title" style={{marginLeft:"2.3em"}}>Unread</h2>
-                <ul>
+            {selectedTab === 'unread' && unreadNotifications.length > 0 && (
+              <div>
+                <ul className="notifications-list">
                   {unreadNotifications.map((notification) => (
                     <li
                       key={notification.NotificationsID}
@@ -96,7 +111,7 @@ const NotificationsPage = () => {
                         <div className="content" style={{ display: 'flex', flexDirection: 'column' }}>
                           <h3 className="time" style={{ marginLeft: '-12%' }}>
                             {(notification.TimeNotified).slice(0, 10)}
-                            <label style={{ marginLeft: '12em' }}>
+                            <label style={{ marginLeft: '12em', cursor:"pointer" }}>
                               <input
                                 type="checkbox"
                                 checked={notification.isRead}
@@ -108,11 +123,11 @@ const NotificationsPage = () => {
                           </h3>
                           <div className="notification-content" style={{ display: 'flex', gap: '20px' }}>
                             <p>{notification.NotificationType}</p>
-                            <div className="actions" >
+                            <div className="actions" style={{ marginLeft:"23%", marginTop: '-.2em' }}>
                               <FontAwesomeIcon
                                 className="trash-icon"
                                 icon={faTrash}
-                                style={{ color: '#E38B00',position: 'absolute', right: '36%', marginTop: '.2em' }}
+                                style={{ color: '#E83D95', transform: 'translateY(-50%)', cursor: "pointer" }}
                                 onClick={() => handleDelete(notification)}
                               />
                             </div>
@@ -122,13 +137,12 @@ const NotificationsPage = () => {
                     </li>
                   ))}
                 </ul>
-              </>
+              </div>
             )}
 
-            {readNotifications.length > 0 && (
-              <>
-                <h2 className="notification-title" style={{marginTop:"2em", marginLeft:"2.3em"}}>Read</h2>
-                <ul>
+            {selectedTab === 'read' && readNotifications.length > 0 && (
+              <div>
+                <ul className="notifications-list">
                   {readNotifications.map((notification) => (
                     <li
                       key={notification.NotificationsID}
@@ -150,11 +164,11 @@ const NotificationsPage = () => {
                           </h3>
                           <div className="notification-content" style={{ display: 'flex', gap: '20px' }}>
                             <p>{notification.NotificationType}</p>
-                            <div className="actions" style={{ position: 'absolute', right: '36%', marginTop: '1.25em' }}>
+                            <div className="actions" style={{ paddingLeft:"13%", marginTop: '-.2em' }}>
                               <FontAwesomeIcon
                                 className="trash-icon"
                                 icon={faTrash}
-                                style={{ color: '#E38B00',position: 'absolute', right: '36%', marginTop: '-1em' }}
+                                style={{ color: '#E83D95', cursor: "pointer" }}
                                 onClick={() => handleDelete(notification)}
                               />
                             </div>
@@ -164,7 +178,7 @@ const NotificationsPage = () => {
                     </li>
                   ))}
                 </ul>
-              </>
+              </div>
             )}
           </>
         )}
@@ -174,4 +188,3 @@ const NotificationsPage = () => {
 };
 
 export default NotificationsPage;
-

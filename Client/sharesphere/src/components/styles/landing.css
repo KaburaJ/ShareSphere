@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 1em;
   justify-content: center;
   height: 100vh;
+  background-color: #f4e4ec;
   background-image: url('../../images/female-g656310b7a_1280.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -67,15 +67,15 @@
   }
   
   .email-signup-button {
-    background-color: #1e90ff;
+    background-color: #e83d95;
   }
   
   .google-signup-button {
-    background-color: #db4437;
+    background-color: #e83d95;
   }
   
   .signin-button {
-    background-color: #e38b00;
+    background-color: #e83d95;
   }
   
   .or-divider {
@@ -110,7 +110,7 @@
   }
   
   .signin-prompt a {
-    color: #e38b00;
+    color: #e83d95;
     font-weight:bold;
     text-decoration: none;
   }

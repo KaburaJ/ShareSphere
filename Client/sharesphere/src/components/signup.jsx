@@ -97,9 +97,9 @@ export const Signup = () => {
 
   const bottom = () => {
     return (
-      <h4 style={{ marginLeft: '14%', color: '#C97C02' }}>
+      <h4 style={{ marginLeft: '1em', color: '#e83d95' }}>
         Already have an account? 
-        <Link to="/login" style={{ marginLeft: '27%', color: '#e9a233', fontSize: 'medium' }}>Sign in</Link>
+        <Link to="/login" style={{ marginLeft: '1em', color: '#eb6eb0', fontSize: 'medium' }}>Sign in</Link>
       </h4>
     );
   };
@@ -181,7 +181,7 @@ export const Signup = () => {
           <>
           <div className='firstname'>
             <form onSubmit={handleFormSubmit}>
-              <div>Step 1 of 7</div>
+              <div style={{marginLeft:"6em"}}>Step 1 of 7</div>
               <input className='FirstName' placeholder="First name" value={firstname} onChange={handleFirstName} />
               {bottom()}
             </form>
@@ -192,9 +192,8 @@ export const Signup = () => {
         return (
           <div className='lastname'>
             <form onSubmit={handleFormSubmit}>
-              <div>Step 2 of 7</div>
+              <div style={{marginLeft:"6em"}}>Step 2 of 7</div>
               <input className='LastName' placeholder="Last name" value={lastname} onChange={handleLastName} />
-              {bottom()}
             </form>
           </div>
         );
@@ -202,9 +201,8 @@ export const Signup = () => {
         return (
           <div className='username'style={{marginLeft:"45%"}}>
             <form onSubmit={handleFormSubmit}>
-              <div>Step 3 of 7</div>
-              <input className='UserName'  placeholder="Username" value={username} onChange={handleUserName} />
-              {bottom()}
+              <div style={{marginLeft:"-9em"}}>Step 3 of 7</div>
+              <input className='UserName' style={{marginLeft:"-17em"}} placeholder="Username" value={username} onChange={handleUserName} />
             </form>
           </div>
         );
@@ -212,9 +210,8 @@ export const Signup = () => {
         return (
           <div className='userage'>
             <form onSubmit={handleFormSubmit}>
-              <div>Step 4 of 7</div>
+              <div style={{marginLeft:"6em"}}>Step 4 of 7</div>
               <input className='UserAge' placeholder="Age" value={userage} onChange={handleUserAge} />
-              {bottom()}
             </form>
           </div>
         );
@@ -222,9 +219,8 @@ export const Signup = () => {
         return (
           <div className='useremail'>
             <form onSubmit={handleFormSubmit}>
-              <div>Step 5 of 7</div>
+              <div style={{marginLeft:"6em"}}>Step 5 of 7</div>
               <input className='UserEmail' placeholder="Email" value={useremail} onChange={handleUserEmail} />
-              {bottom()}
             </form>
           </div>
         );
@@ -232,9 +228,8 @@ export const Signup = () => {
         return (
           <div className='password'>
             <form onSubmit={handleFormSubmit}>
-              <div>Step 6 of 7</div>
+              <div style={{marginLeft:"6em"}}>Step 6 of 7</div>
               <input type="password" className='Password' placeholder="Password" value={password} onChange={handlePassword} />
-              {bottom()}
             </form>
           </div>
         );
@@ -242,7 +237,7 @@ export const Signup = () => {
           return (
             <div className='c-password'>
               <form onSubmit={handleSignUpSubmit}>
-                <div>Step 7 of 7</div>
+                <div style={{marginLeft:"-22em"}}>Step 7 of 7</div>
                 <input
                   type="password"
                   className='c-password'
@@ -250,10 +245,9 @@ export const Signup = () => {
                   value={cpassword}
                   onChange={handleCPassword}
                 />
-                <button type="submit">
+                <button type="submit" style={{marginLeft:"6em"}}>
                   Sign Up
                 </button>
-                {bottom()}
               </form>
             </div>
           );
@@ -264,8 +258,8 @@ export const Signup = () => {
 
 
   return (
-    <div className='signup' style={{boxSizing:"border-box"}}>
-      <BackButton />
+    <div className='signup' style={{position:"fixed", backgroundColor:"#f4e4ec", height: "100vh"}}>
+      {/* <BackButton /> */}
       {Navigation()}
       {signUpContent()}
       <ToastContainer

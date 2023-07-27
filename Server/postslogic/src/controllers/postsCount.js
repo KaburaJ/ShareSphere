@@ -4,10 +4,15 @@ const config = require('../config/userConfig');
 async function PostsCount(req, res) {
   try{
         let sql = await mssql.connect(config);
-        let UserID = req.session.user.UserID;
+        let UserID;
+        if(req.params.userid){
+          UserID = req.params.userid
+        }else{
+          UserID = req.session.user.UserID
+        }
         if (sql.connected) {
           let request = new mssql.Request(sql);
-          request.input('userID', UserID)
+          request.input('userID',mssql.UniqueIdentifier, UserID)
           let results = await request.execute('PostsCount')
           res.json({
             success: true,

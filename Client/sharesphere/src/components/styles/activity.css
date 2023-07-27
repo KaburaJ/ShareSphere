@@ -1,46 +1,81 @@
 .container {
-    max-width: 750px;
-    margin-top: 5%;
-    margin-left: 30%;
-  }
-  
-  .activity-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .activity-item {
-    background-color: white;
-    padding: 2em;
-    box-shadow: 2px 2px 2px 2px solid #ccc;
-    margin-bottom: 2em;
-    width: 400px;
-  }
-  
-  .reply,
-  .post,
-  .comment {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .activity-title {
-    color: black;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  
-  .activity-content {
-    margin-bottom: 10px;
-  }
-  
-  .activity-date {
-    color: #888;
-  }
-  
-  hr {
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-  
+  max-width: 750px;
+  /* margin-top: 1em; */
+  margin-left: 30%;
+  display: flex; /* Add display flex to position sidebar and content side by side */
+}
+
+.sidebar {
+  width: 30%;
+  position: fixed; /* Fix the sidebar to the left */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #f8f8f8; /* Set sidebar background color */
+  box-shadow: 2px 0 2px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+}
+
+.activity-container {
+  flex: 1; /* Allow the activity container to occupy the remaining width */
+  margin-left: 30%; /* Add a margin to push the content to the right of the sidebar */
+  padding-top: 2em; /* Add padding to the top to account for the fixed header */
+  overflow-y: auto; /* Enable vertical scrolling for activities */
+  max-height: calc(100vh - 64px); /* Set the maximum height of the activities list (viewport height minus the height of header) */
+}
+
+.activity-header {
+  text-align: center;
+  margin-bottom: 1em;
+  position: fixed; /* Fix the header to the top */
+  top: 0;
+  left: 30%; /* Add the same left margin as the content to align with the sidebar */
+  right: 0;
+  background-color: #ffffff; /* Set header background color */
+  padding: 1em;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.activity-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.activity-item {
+  background-color: white;
+  padding: 2em;
+  box-shadow: 2px 2px 2px 2px solid #ccc;
+  margin: 1em;
+  flex: 1 1 300px;
+  max-width: 300px;
+  cursor: pointer;
+}
+
+.activity-reply,
+.activity-post,
+.activity-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid transparent;
+  padding: 1em;
+  border-color: #BB7401;
+}
+
+.activity-post {
+  border-color: #BB7401; /* Set default selected category color */
+}
+
+.activity-title {
+  color: #BB7401; /* Set default selected category color */
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.activity-content {
+  margin-bottom: 10px;
+}
+
+.activity-date {
+  color: #888;
+}

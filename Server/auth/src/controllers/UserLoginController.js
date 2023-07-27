@@ -57,19 +57,5 @@ module.exports = {
         message: 'Login error',
       });
     }
-  },
-  loginbUser: async (req, res) => {
-    const { username} = req.params;
-
-
-    if (username) {
-        req.session.authorized = true;
-        req.session.user = username;
-    }
-    res.status(200).json({
-      success: true,
-      message: 'Logged in successfully',
-      result: req.session
-    });
-  },
+  }
 };

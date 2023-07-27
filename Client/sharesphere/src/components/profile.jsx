@@ -12,6 +12,7 @@ import BackButton from './back';
 import { ToastContainer, toast } from 'react-toastify';
 import LogoutDialog from './logoutDialog';
 import { useDarkMode } from './darkModeContext';
+import BasicInfoDialog from './basicInformation';
 
 export const Profile = () => {
   const profileStyle = {
@@ -38,6 +39,35 @@ export const Profile = () => {
   const [hasProfile, setHasProfile] = useState(false);
   const [showLogoutDialog, setShowLogoutDialog] = useState(false)
   const [darkMode] = useDarkMode()
+  const [showBasicInfoDialog, setShowBasicInfoDialog] = useState(false);
+
+
+
+  const handleDeleteAccount = async () => {
+    try {
+      const response = await axios.delete('http://localhost:5003/user/deleteaccount', {
+        withCredentials: true
+      });
+
+      if (response.status === 200) {
+        // Account deleted successfully, redirect to /signup
+        navigate('/signup');
+      } else {
+        console.error('Error while deleting account:', response.data);
+      }
+    } catch (error) {
+      console.error('Error while deleting account:', error);
+    }
+  };
+
+
+  const handleBasicInfo = () => {
+    setShowBasicInfoDialog(true);
+  };
+
+  const handleBasicInfoDialogClose = () => {
+    setShowBasicInfoDialog(false);
+  };
 
 
   const handleNext = (selectedStep) => {
@@ -195,11 +225,11 @@ export const Profile = () => {
     viewProfile()
   }, [])
 
-  const handleUserActivity = async () => {
+  const handleUserActivity = () => {
     navigate('/activity')
   }
 
-  const handleEditProfile = async () => {
+  const handleEditProfile = () => {
     navigate("/profilesettings")
   }
 
@@ -276,14 +306,12 @@ export const Profile = () => {
     toast.warn('Do you want to log out?', {
       position: "top-center",
       autoClose: 3000
-    })
+    });
 
     setTimeout(() => {
-      setShowLogoutDialog(true)
+      setShowLogoutDialog(true);
     }, 4000);
-
-
-  }
+  };
 
   const handleUserLogOut = async (password) => {
     try {
@@ -291,7 +319,7 @@ export const Profile = () => {
         password: password
       };
 
-      let response = await axios.post('http://localhost:5003/users/logout', logoutData, {
+      let response = await axios.post('http://localhost:5002/users/logout', logoutData, {
         withCredentials: true
       });
 
@@ -310,104 +338,95 @@ export const Profile = () => {
 
 
   return (
-    <div style={darkMode ? { backgroundColor: "black", color: "white",marginTop:"-1em"} : {}}>
-    {showLogoutDialog && (
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    )}
+    <div style={darkMode ? { backgroundColor: "black", color: "white"} : {}}>
+      {showLogoutDialog && (
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      )}
+      {showLogoutDialog && (
+        <LogoutDialog
+          onClose={() => setShowLogoutDialog(false)}
+          onConfirm={handleUserLogOut}
+        />
+      )}
+      {showBasicInfoDialog && (
+        <BasicInfoDialog
+          onClose={handleBasicInfoDialogClose}
+          details={details} // Pass the user details to BasicInfoDialog
+        />
+      )}
       <div className={`profile ${darkMode ? 'profile-dark-mode' : ''}`}>
-      <SideBar className="sideBar" />
-      <div className="signup">
-        <div className="back" style={{ marginTop:"1em",marginLeft: "22%" }}>
-          <BackButton />
-        </div>
-        <div className="profile-container">
-          <div className='profile-header'>
-          </div>
-
-          {<FontAwesomeIcon icon={faTrash} onClick={handleProfileDelete} style={{ color: "#F9FAFC", cursor: "pointer", marginLeft: "75%" }} />}
-          {isFormComplete ? (
-            <div className="card">
-              <img src={profile.ProfileImage} alt="" />
-              <h1>{profile.UserName}</h1>
-              <p className="title">{profile.ProfileDescription}</p>
-              <p>{profile.ProfileDescription}</p>
-              <p style={{ display: "block" }}>
-                <button className="contact" style={{ marginBottom: ".4em" }}>View activity</button>
-              </p>
+        <div className="signup">
+          {/* <div className="back" style={{ position:"absolute"}}>
+            <BackButton />
+          </div> */}
+          <div className="profile-container">
+            {<FontAwesomeIcon icon={faTrash} onClick={handleProfileDelete} style={{ color: "#F9FAFC", cursor: "pointer", marginLeft: "75%" }} />}
+            {isFormComplete ? (
+              <div className="profile-image">
+                <Image cloudName="dfqjfd2iv" publicId={profile.ProfileImage} className="profile-image" />
+              </div>
+            ) : (
+              createProfileContent()
+            )}
+            <div className="profile-pic">
+              <img src={profile.ProfileImage} style={{ position: "absolute", borderRadius: "50%", width: "12em", height: "12em", marginTop: "-11em" }}></img>
             </div>
-          ) : (
-            createProfileContent()
-          )}
-          <div className="card">
-            <img src={profile.ProfileImage} alt="John" style={profileStyle} />
-            <h1 style={{ marginTop: "1em" }}>{profile.UserName}</h1>
-            <p className="title">{profile.ProfileDescription}</p>
-            {/* <p>{profile.ProfileDescription}</p> */}
-            <p style={{ marginBottom: "1.5em" }}>
-              <button onClick={handleUserActivity} style={{ marginTop: "1em", width: "70%" }}>View activity</button>
-            </p>
-            <p style={{ marginBottom: "1.5em" }}><button onClick={handleEditProfile} style={{ width: "70%" }}>Edit Profile</button></p>
-            {!hasProfile && (
-              <p style={{ marginBottom: "1.5em" }}>
-                <button onClick={Navigation()} style={{ width: "100%" }}>
-                  Create Profile
-                </button>
-              </p>
-            )}
-            <p style={{ marginBottom: "1.5em" }}>
-              <button onClick={handleLogOutButtonClick} style={{ marginTop: "1em", width: "70%" }}>Log Out</button>
-            </p>
-            {showLogoutDialog && (
-              <LogoutDialog
-                onClose={() => setShowLogoutDialog(false)}
-                onConfirm={handleUserLogOut}
+            </div>
+            <div className="profile-details">
+              <h1>{profile.UserName}</h1>
+              <p className="title" style={{ marginBottom: ".5em" }}>{profile.ProfileDescription}</p>
+              <div>
+                <button onClick={handleEditProfile} className="profile-button">Message</button>
+                <button onClick={handleEditProfile} className="profile-button">Edit Profile</button>
+                <button onClick={handleLogOutButtonClick} className="profile-button">Log Out</button>
+              </div>
+              {!hasProfile && (
+                <p>
+                  <button onClick={Navigation()} className="profile-button">
+                    Create Profile
+                  </button>
+                </p>
+              )}
+            </div>
+
+            {/* Horizontal Fields */}
+            <div className="horizontal-fields">
+              <div className="field">
+                <h2>{postsCount}</h2>
+                <p>Posts</p>
+              </div>
+              <div className="field">
+                <h2>{followers}</h2>
+                <p>Followers</p>
+              </div>
+              <div className="field">
+                <h2>{following}</h2>
+                <p>Following</p>
+              </div>
+              <FontAwesomeIcon
+                icon={faTrash}
+                onClick={handleDeleteAccount}
+                style={{ color: "#E83D95", cursor: "pointer", marginLeft: "1rem" }}
               />
-            )}
+            </div>
 
-          </div>
-          <div className="actions-card">
-            <h1 style={{ marginTop: "1.5em" }}>Metrics</h1>
-            <p className="title">Posts:{postsCount}</p>
-            <p className="title">Followers:{followers}</p>
-            <p className="title">Following:{following}</p>
-            <p style={{ marginBottom: "1.5em" }}>
-              <button onClick={handleFollowers} style={{ width: "70%" }}>Relationships</button>
-            </p>
-            <p style={{ marginBottom: "1.5em" }}><button onClick={handleEditProfile} style={{ width: "70%" }}>Message</button></p>
-          </div>
-
-          <div className="details-card">
-            <p className="title" style={{ marginTop: "1em", marginBottom: "1em" }}>
-              FirstName<br /><p style={{ marginTop: ".5em", fontSize: "10", fontWeight: "100" }}>{details.FirstName}</p></p>
-            <p className="title" style={{ marginTop: "1em", marginBottom: "1em" }}>
-              LastName<br /><p style={{ marginTop: ".5em", fontSize: "10", fontWeight: "100" }}>{details.LastName}</p></p>
-            <p className="title" style={{ marginTop: "1em", marginBottom: "1em" }}>
-              Age<br /><p style={{ marginTop: ".5em", fontSize: "10", fontWeight: "100" }}>{details.UserAge}</p></p>
-            <p className="title" style={{ marginTop: "1em", marginBottom: "1em" }}>
-              Email Address<br /><p style={{ marginTop: ".5em", fontSize: "10", fontWeight: "100" }}>{details.UserEmail}</p></p>
-            <p className="title" style={{ marginTop: "1em", marginBottom: "1em" }}>
-              Date Joined<br />
-              <p style={{ marginTop: ".5em", fontSize: "10", fontWeight: "100" }}>
-                {details.timestamp ? details.timestamp.slice(0, 10) : ""}
-              </p>
-            </p>
-
-          </div>
+            <div className="profile-metrics" style={{ borderTop: "1px solid #ccc", paddingTop: "1em" }}>
+              <button onClick={handleUserActivity} className="profile-button">View activity</button>
+              <button onClick={handleFollowers} className="profile-button">Relationships</button>
+              <button onClick={handleBasicInfo} className="profile-button">Basic Information</button>
+            </div>
         </div>
       </div>
-
-    </div>
     </div>
   );
 };
-

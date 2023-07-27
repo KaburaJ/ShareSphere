@@ -7,7 +7,7 @@ async function ViewFollowers(req, res) {
         let UserID=req.session.user.UserID;
         if (sql.connected) {
           let request = new mssql.Request(sql);
-          request.input('userID', UserID)
+          request.input('UserID', UserID)
           let results = await request.execute('ViewFollowers')
           res.json(
             {

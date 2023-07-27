@@ -41,39 +41,50 @@ try {
     const oneDay = 60 * 60 * 1000 * 24;
 app.use((req, res, next)=>{req.pool = pool; next()})
 
+// Add the session middleware
 app.use(session({
   store: redisStore,
   secret: process.env.SECRET,
   saveUninitialized: false,
-  genid: ()=>v4(),
+  genid: () => v4(),
   resave: true,
   rolling: true,
   unset: 'destroy',
-  cookie:{
-      httpOnly: true,
-      maxAge: oneDay,
-      secure: false,
-      domain: 'localhost'
+  cookie: {
+    httpOnly: true,
+    maxAge: oneDay,
+    secure: false,
+    domain: 'localhost'
   }
 }))
 
-app.use('/', async(req, res, next)=>{
-  let cookie = req.headers['cookie']
-  let sessionID = cookie.substring(16, 52)
-  let session = await redisClient.get(sessionID)
-  if(session){
-      let real_session = JSON.parse(session)
-      // console.log(real_session);
-      next()
-  }else{
-      res.status(403).json({
-          success:false,
-          message: "login to proceed"
-      })
-  }
-})
 
-app.use(logicRoutes)
+app.use('/', async (req, res, next) => {
+  try {
+    let cookie = req.headers['cookie'];
+    if (!cookie) {
+      throw new Error('Cookie header is missing.');
+    }
+
+    let sessionID = cookie.substring(16, 52);
+    let session = await redisClient.get(sessionID);
+    if (session) {
+      let real_session = JSON.parse(session);
+      // console.log(real_session);
+      next();
+    } else {
+      res.status(403).json({
+        success: false,
+        message: "login to proceed",
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.use('/', logicRoutes);
 
 app.get('/', (req, res) => {
   res.send('Share Sphere');
@@ -92,6 +103,5 @@ app.listen(port, () => {
 }
 
 startApp();
-
 
 

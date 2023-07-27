@@ -7,7 +7,7 @@ async function GetPostDetails(req, res) {
     let user = req.body;
     if (sql.connected) {
       let request = new mssql.Request(sql);
-      request.input('postID', user.PostID);
+      request.input('postId', user.PostID);
       let results = await request.execute('GetPostDetails');
       let posts = {};
       results.recordset.forEach((row) => {
@@ -16,6 +16,10 @@ async function GetPostDetails(req, res) {
         if (!posts[postId]) {
           posts[postId] = {
             PostID: row.PostID,
+            UserID: row.UserID,
+            UserName: row.UserName,
+            ProfileImage: row.ProfileImage, // Include the ProfileImage
+            PostURL: row.PostURL,
             PostDescription: row.PostDescription,
             Comments: [],
             Reactions: {},
@@ -29,9 +33,13 @@ async function GetPostDetails(req, res) {
           if (!comment) {
             comment = {
               CommentID: commentId,
+              UserID: row.CommentUserID,
+              UserName: row.CommentUserName,
+              ProfileImage: row.CommenterProfileImage, // Include the commenter profile image
               CommentDescription: row.CommentDescription,
               Replies: [],
               Reactions: {},
+              LikeCount: row.CommentCount, // Include the comment like count
             };
             posts[postId].Comments.push(comment);
           }
@@ -43,8 +51,12 @@ async function GetPostDetails(req, res) {
             if (!reply) {
               reply = {
                 ReplyID: replyId,
+                UserID: row.ReplyUserID,
+                UserName: row.ReplyUserName,
+                ProfileImage: row.ReplierProfileImage, // Include the replier profile image
                 ReplyDescription: row.ReplyDescription,
                 Reactions: {},
+                LikeCount: row.ReplyCount, // Include the reply like count
               };
               comment.Replies.push(reply);
             }
@@ -86,11 +98,10 @@ async function GetPostDetails(req, res) {
           if (!posts[postId].Reactions[category]) {
             posts[postId].Reactions[category] = [];
           }
-            posts[postId].Reactions[category].push({
-                ReactionID: reactionId,
-                ReactionType: row.ReactionType,
-              });
-          
+          posts[postId].Reactions[category].push({
+            ReactionID: reactionId,
+            ReactionType: row.ReactionType,
+          });
         }
       });
 

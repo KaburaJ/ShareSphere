@@ -1,145 +1,247 @@
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 310px;
-    height: auto;
-    text-align: center;
-    font-family: arial;
-    margin-top: 4em;
-    position: absolute;
-    margin-left: 14.5em;
-    border-left: 1px solid #ccc;
+/* profile.css */
 
-  }
-  
-
-  .profile-dark-mode{
-    background-color: black;
-    color: white;
-    height: 100vh;
-    margin-top: -6em;
-  }
-
-  .profile-dark-mode .details-card,
-  .profile-dark-mode .card,
-  /* .profile-dark-mode .details-card .title, */
-  .profile-dark-mode  .actions-card {
-    background-color: black;
-    color: white;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-  }
-
-  .details-card,
-  .actions-card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    width: 380px;
-    height: auto;
-    text-align: center;
-    font-family: arial;
-    margin-top: -.2em;
-    position: absolute;
-    margin-left: 35em;
-    background-color: white;
-
-  }
-
-
-  .details-card{
-    margin-left: 60.3em;
-    width: 310px;
-    margin-top: 4.8em;
-  
-  }
-
-  .details-card .title,
-  .actions-card .title{
-    color: grey;
-    font-size: 16px;
-    padding: 1em;
-  }
-
-  .details-card .title{
-    padding:.5em;
-    font-weight: bold
-  }
-.card img{
-  object-fit: cover;
-  object-position: center;
-  width: auto;
+/* Reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-  
-  .title {
-    color: grey;
-    font-size: 18px;
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #F9FAFC; /* Set a background color for the page */
+}
+
+button{
+  background-color: #E83D95;
+}
+
+.profile {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: 12.5em;
+}
+
+/* Profile Header */
+.profile-header {
+  height: 200px;
+  background-color: #F4E4EC; /* Set a header background color */
+}
+
+/* Profile Image Container */
+.profile-image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.profile-image-container form {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image-container input[type="file"] {
+  display: none;
+}
+
+.profile-image-container button {
+  background-color: #E83D95;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  border-radius: 4px;
+}
+
+/* Profile Image Display */
+.profile-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Profile Description Container */
+.profile-description-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.profile-description-container form {
+  display: flex;
+  align-items: center;
+}
+
+.profile-description-container input[type="text"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.profile-description-container button {
+  background-color: #E83D95;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+  border-radius: 4px;
+}
+
+.profile-details {
+  margin-top: 1rem;
+  position: relative;
+}
+
+.profile-details h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-details p.title {
+  font-size: 1.2rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.profile-details .profile-button {
+  background-color: #E83D95;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+/* Profile Metrics */
+.profile-metrics {
+  display: flex;
+  gap:8em;
+  margin-top: 2rem;
+  /* text-align: center; */
+}
+
+.profile-metrics h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.profile-metrics p.title {
+  font-size: 1.2rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.profile-metrics .profile-button {
+  background-color: #E83D95;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 1rem;
+  border-radius: 4px;
+}
+
+/* Profile Info */
+.profile-info {
+  margin-top: 2rem;
+}
+
+.profile-info p.title {
+  font-size: 1.2rem;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.profile-info .profile-info-details {
+  font-weight: bold;
+}
+
+/* Styling for dark mode */
+.profile-dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+
+.horizontal-fields {
+  display: flex;
+  align-items: center;
+  gap:40px;
+  margin-top: 1rem;
+}
+
+.field {
+  text-align: center;
+}
+
+.field h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.field p {
+  font-size: 1rem;
+  color: #888;
+}
+
+.activity-button,
+.followers-button {
+  background-color: #E83D95;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* ... (other CSS styles) */
+/* ... (other CSS styles) */
+
+/* Tablets and small laptops */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .middle-container {
+    width: 70%;
+    padding-left: 1em;
+    position: static; /* Reset the position to normal */
   }
-  
-  .contact {
-    border: none;
-    outline: 0;
-    display: inline-block;
-    padding: 8px;
-    color: white;
-    background-color: #eca179;
-    text-align: center;
-    cursor: pointer;
+
+  .header {
+    width: 70%;
+    margin-left: 0;
+  }
+
+  .right-side-bar {
+    width: 350px; /* Set a fixed width for the right sidebar */
+    margin-left: 0; /* Remove the margin-left */
+    margin-right: 0; /* Remove the margin-right */
+  }
+
+  .follow-suggestions {
+    height: 60vh;
     width: 100%;
-    font-size: 18px;
-  }
-  
-  a {
-    text-decoration: none;
-    font-size: 22px;
-    color: black;
-  }
-  
-  .contact:hover, a:hover {
-    opacity: 0.7;
+    margin-left: 0;
+    margin-right: 0;
+    padding-right: 0.5em;
   }
 
-  .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
+  .suggestions-header {
+    margin-left: 0;
+    margin-top: 0.5em;
+  }
+
+  .footer {
     width: 100%;
-    height: 100%;
-    background-color: #F2F2F2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
+    margin-left: 0;
+    margin-right: 0;
   }
-  
-  .popup-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .popup-content h2 {
-    margin-top: 0;
-  }
-  
-  .popup-content pre {
-    white-space: pre-wrap;
-  }
-  
-  .popup-content button {
-    margin-top: 10px;
-  }
-  
-  .popup-content p {
-    white-space: pre-wrap;
-  }
+}
 
-  .profile-header{
-    display: flex;
-    flex-direction: column;
-  }
 
-  .profile-container{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  

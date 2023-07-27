@@ -58,3 +58,21 @@
 .g-font-weight-600 {
     font-weight: 600 !important;
 }
+
+.container {
+    max-width: 650px;
+    margin-top: 1em;
+    margin-left: 35%;
+    height: 100vh;
+    overflow-y: auto; /* Make the content scrollable */
+  }
+  
+  .container h1 {
+    position: sticky;
+    top: 0;
+    background-color: white; /* You can set the desired background color */
+    padding: 1em;
+    margin: 0;
+    z-index: 1; /* Ensure the title is on top of the content */
+  }
+  
